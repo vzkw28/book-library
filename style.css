@@ -13,9 +13,19 @@ body {
 .book-card {
     border: 1px solid #ccc;
     padding: 1rem;
-    width: 200px;
-    border-radius: 8px;
+    margin: 1rem 0;
+    border-radius: 6px;
     background-color: bisque;
+}
+
+.book-card button {
+    margin-top: 0.5rem;
+    background-color: crimson;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 4px;
 }
 
 #book-form input {

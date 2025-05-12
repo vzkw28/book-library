@@ -30,8 +30,24 @@ function displayBooks() {
         <p><strong>Read:<strong> ${book.isRead ? "Yes" : "No"}</p>
         `;
 
-    container.appendChild(card);
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = 'Remove';
+        removeBtn.addEventListener('click', () => {
+            removeBookFromLibrary(book.id);
+        });
+
+        card.appendChild(removeBtn);
+        container.appendChild(card);
+
   });
+}
+
+function removeBookFromLibrary(id) {
+    const index = myLibrary.findIndex(book => book.id === id);
+    if (index !== -1) {
+        myLibrary.splice(index,1);
+        displayBooks();
+    }
 }
 
 const form = document.getElementById("book-form");
