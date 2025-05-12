@@ -8,6 +8,19 @@
 </head>
 <body>
   <h1>My Book Library</h1>
+
+  <button id="new-book-btn">New Book</button>
+
+  <form id="book-form" style="display: none; margin-top: 1rem;">
+    <input type="text" id="title" placeholder="Title" required />
+    <input type="text" id="author" placeholder="Author" required />
+    <input type="number" id="pages" placeholder="Pages" required />
+    <label>
+      <input type="checkbox" id="isRead" />
+      Read
+    </label>
+    <button type="submit">Add Book</button>
+  </form>
   <div id="books-container"></div>
   <script src="script.js"></script>
 </body>

@@ -17,3 +17,8 @@ body {
     border-radius: 8px;
     background-color: bisque;
 }
+
+#book-form input {
+    display: block;
+    margin: 0.5rem 0;
+}
