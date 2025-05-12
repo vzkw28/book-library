@@ -32,3 +32,8 @@ body {
     display: block;
     margin: 0.5rem 0;
 }
+
+.book-card button:nth-child(2) {
+    background-color: #4caf50;
+    margin-left: 0.5rem;
+}

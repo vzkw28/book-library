@@ -8,6 +8,10 @@ function Book(title, author, pages, isRead) {
   this.isRead = isRead;
 }
 
+Book.prototype.toggleRead = function () {
+    this.isRead = !this.isRead;
+};
+
 function addBookToLibrary(title, author, pages, isRead) {
   const newBook = new Book(title, author, pages, isRead);
   myLibrary.push(newBook);
@@ -36,7 +40,15 @@ function displayBooks() {
             removeBookFromLibrary(book.id);
         });
 
+        const toggleBtn = document.createElement('button');
+        toggleBtn.textContent = 'Toggle Read';
+        toggleBtn.addEventListener('click', () => {
+            book.toggleRead();
+            displayBooks();
+        });
+
         card.appendChild(removeBtn);
+        card.appendChild(toggleBtn);
         container.appendChild(card);
 
   });
