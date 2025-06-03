@@ -1,21 +1,22 @@
-const myLibrary = [];
+let myLibrary = [];
 
-function Book(title, author, pages, isRead) {
-  this.id = crypto.randomUUID();
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.isRead = isRead;
+class Book {
+  constructor(title, author, pages, isRead) {
+    this.id = Date.now();
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = isRead;
+  }
+
+  toggleRead() {
+    this.read = !this.read;
+  }
 }
-
-Book.prototype.toggleRead = function () {
-    this.isRead = !this.isRead;
-};
 
 function addBookToLibrary(title, author, pages, isRead) {
   const newBook = new Book(title, author, pages, isRead);
   myLibrary.push(newBook);
-  displayBooks();
 }
 
 function displayBooks() {
@@ -28,38 +29,39 @@ function displayBooks() {
     card.setAttribute("data-id", book.id);
 
     card.innerHTML = `
-        <h3>${book.title}</h3>
-        <p><strong>Author:<strong> ${book.author}</p>
-        <p><strong>Pages:<strong> ${book.pages}</p>
-        <p><strong>Read:<strong> ${book.isRead ? "Yes" : "No"}</p>
-        `;
+      <h3>${book.title}</h3>
+      <p><strong>Author:</strong> ${book.author}</p>
+      <p><strong>Pages:</strong> ${book.pages}</p>
+      <p><strong>Read:</strong> ${book.read ? "Yes" : "No"}</p>
+    `;
 
-        const removeBtn = document.createElement('button');
-        removeBtn.textContent = 'Remove';
-        removeBtn.addEventListener('click', () => {
-            removeBookFromLibrary(book.id);
-        });
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "Remove";
+    removeBtn.classList.add("remove-btn");
+    removeBtn.addEventListener("click", () => {
+      removeBookFromLibrary(book.id);
+    });
 
-        const toggleBtn = document.createElement('button');
-        toggleBtn.textContent = 'Toggle Read';
-        toggleBtn.addEventListener('click', () => {
-            book.toggleRead();
-            displayBooks();
-        });
+    const toggleBtn = document.createElement("button");
+    toggleBtn.textContent = "Toggle Read";
+    toggleBtn.classList.add("toggle-btn");
+    toggleBtn.addEventListener("click", () => {
+      book.toggleRead();
+      displayBooks();
+    });
 
-        card.appendChild(removeBtn);
-        card.appendChild(toggleBtn);
-        container.appendChild(card);
-
+    card.appendChild(removeBtn);
+    card.appendChild(toggleBtn);
+    container.appendChild(card);
   });
 }
 
 function removeBookFromLibrary(id) {
-    const index = myLibrary.findIndex(book => book.id === id);
-    if (index !== -1) {
-        myLibrary.splice(index,1);
-        displayBooks();
-    }
+  const index = myLibrary.findIndex((book) => book.id === id);
+  if (index !== -1) {
+    myLibrary.splice(index, 1);
+    displayBooks();
+  }
 }
 
 const form = document.getElementById("book-form");
@@ -77,8 +79,10 @@ form.addEventListener("submit", (event) => {
   const pages = parseInt(document.getElementById("pages").value);
   const isRead = document.getElementById("isRead").checked;
 
-  addBookToLibrary(title,author,pages,isRead);
+  addBookToLibrary(title, author, pages, isRead);
+  displayBooks();
 
   form.reset();
-  form.style.display = 'none';
+  form.style.display = "none";
 });
+

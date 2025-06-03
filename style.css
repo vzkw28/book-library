@@ -1,39 +1,49 @@
 body {
     font-family: sans-serif;
     margin: 2rem;
-}
-
-#books-container{
+  }
+  
+  #books-container {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
     margin-top: 1rem;
-}
-
-.book-card {
+  }
+  
+  .book-card {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
     border: 1px solid #ccc;
     padding: 1rem;
-    margin: 1rem 0;
     border-radius: 6px;
     background-color: bisque;
-}
-
-.book-card button {
+  }
+  
+  .book-card button {
     margin-top: 0.5rem;
-    background-color: crimson;
     color: white;
     border: none;
     padding: 0.5rem;
     cursor: pointer;
     border-radius: 4px;
-}
-
-#book-form input {
+    font-size: 0.9rem;
+  }
+  
+  .remove-btn {
+    background-color: crimson;
+  }
+  
+  .toggle-btn {
+    background-color: #4caf50;
+  }
+  
+  #book-form input,
+  #book-form button {
     display: block;
     margin: 0.5rem 0;
-}
-
-.book-card button:nth-child(2) {
-    background-color: #4caf50;
-    margin-left: 0.5rem;
-}
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+  
